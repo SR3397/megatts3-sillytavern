@@ -21,14 +21,10 @@ A complete integration allowing **ByteDance's MegaTTS3** voice cloning model to 
 | **Kokoro TTS** | ~Minimal | 3s | Excellent | ❌ No voice cloning | ⚠️ Quality but no cloning |
 | **MegaTTS3** | 6.5GB+ | 10-20s | Excellent | ❌ Pre-made only | ❌ Wasteful & limited |
 
-*fish-speech offers **voice cloning with custom voices** at only ~2GB VRAM!*
-
 ## 🚨 Why You Probably Shouldn't Use This
 
 **MegaTTS3 is a diffusion-based model** (like Stable Diffusion for audio) with major limitations:
 - **Massive VRAM usage**: 6.5GB minimum, up to 10GB during inference  
-- **Slow generation**: 32 denoising steps per audio clip
-- **Memory leaks**: Gradio doesn't properly clean up between requests
 - **No custom voice cloning**: ByteDance didn't open-source latent extraction - only their voice collection works
 - **Overkill complexity**: Simpler models like fish-speech achieve better voice cloning with 3x less VRAM
 
@@ -174,7 +170,7 @@ python -m tts.gradio_api
 
 ### File Structure
 ```
-your-repo/
+megatts3-sillytavern/
 ├── megatts3-provider.js    # SillyTavern TTS provider
 ├── cors_server.py          # CORS-enabled file server
 ├── index.js                # Integrates `megatts3` with SillyTavern
@@ -212,14 +208,13 @@ Found a bug or improvement? Please open an issue! However, keep in mind:
 ## ⚠️ Final Recommendation
 
 **For voice cloning, use fish-speech instead of this integration.** fish-speech offers:
-- **Excellent voice cloning** with custom voices (unlike MegaTTS3's pre-made-only limitation)
-- **Only ~2GB VRAM** vs MegaTTS3's 6.5GB+ (3x more efficient!)
+- **Excellent voice cloning** with custom voices
+- **Only ~2GB VRAM**
 - **Quality on par with top TTS models**
-- **Much better stability** and easier setup
 
 **For general TTS (no voice cloning needed)**: Use Kokoro TTS for top quality with minimal VRAM.
 
-This MegaTTS3 integration was an interesting experiment, but **fish-speech proves you can have excellent voice cloning with reasonable resources** - making resource-heavy, limited diffusion models like MegaTTS3 completely obsolete.
+This MegaTTS3 integration was an interesting experiment, but **fish-speech proves you can have excellent voice cloning with reasonable resources**.
 
 ---
 
